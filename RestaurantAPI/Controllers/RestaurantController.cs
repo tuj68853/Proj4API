@@ -27,9 +27,13 @@ namespace RestaurantAPI.Controllers
             {
                 restaurant = new Restaurant();
                 restaurant.Name = record["Name"].ToString();
-                restaurant.Color = record["Color"].ToString();
-                restaurant.Quantity = record["Quantity"].ToString();
-
+                restaurant.Category = record["Category"].ToString();
+                restaurant.Address = record["Address"].ToString();
+                restaurant.AvgFoodQuality = record["AvgFoodQuality"].ToString();
+                restaurant.AvgService = record["AvgService"].ToString();
+                restaurant.AvgAtmosphere = record["AvgAtmosphere"].ToString();
+                restaurant.AvgPriceLevel = record["AvgPriceLevel"].ToString();
+                restaurant.Represenative = record["Represenative"].ToString();
                 restaurants.Add(restaurant);
 
             }

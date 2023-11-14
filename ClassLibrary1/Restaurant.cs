@@ -15,6 +15,7 @@ namespace ClassLibrary1
         string avgService;
         string avgAtmosphere;
         string avgPriceLevel;
+        string represenative;
         
 
 
@@ -55,6 +56,12 @@ namespace ClassLibrary1
         {
             get { return avgPriceLevel; }
             set { this.avgPriceLevel = value; }
+        }
+
+        public string Represenative
+        {
+            get { return represenative; }
+            set { this.represenative = value; }
         }
         public Restaurant()
         {

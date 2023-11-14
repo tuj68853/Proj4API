@@ -1,8 +1,12 @@
-﻿using System;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -46,18 +50,44 @@ namespace Proj4API
                     }
                 }
 
-                ////binding data to visitor gv
+                //////binding data to visitor gv
 
-                strSQL = "SELECT * FROM Restaurants";
-                myDS = objDB.GetDataSet(strSQL);
-                gvVisitor.DataSource = myDS;
-                // Set the DataKeyNames collection to store the ProductNumber in a DataKeys collection.
-                // This is needed when you want to use primary keys in columns of a GridView and hide those columns.
-                // Hidden columns are not rendered into HTML making the unavailable through the Cells collection of a Rom.
-                String[] names = new String[1];
-                names[0] = "Name";
-                gvVisitor.DataKeyNames = names;
+                //strSQL = "SELECT * FROM Restaurants";
+                //myDS = objDB.GetDataSet(strSQL);
+                //gvVisitor.DataSource = myDS;
+                //// Set the DataKeyNames collection to store the ProductNumber in a DataKeys collection.
+                //// This is needed when you want to use primary keys in columns of a GridView and hide those columns.
+                //// Hidden columns are not rendered into HTML making the unavailable through the Cells collection of a Rom.
+                //String[] names = new String[1];
+                //names[0] = "Name";
+                //gvVisitor.DataKeyNames = names;
+                //gvVisitor.DataBind();
+
+
+
+
+
+
+                // Create an HTTP Web Request and get the HTTP Web Response from the server.
+                WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant"); 
+                WebResponse response = request.GetResponse();
+
+                // Read the data from the Web Response, which requires working with streams.
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
+                String data = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+
+                // Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
+                JavaScriptSerializer js = new JavaScriptSerializer();
+
+                Restaurant[] restaurants = js.Deserialize<Restaurant[]>(data);
+                gvVisitor.DataSource = restaurants;
                 gvVisitor.DataBind();
+
+
+
             }
         }
 
