@@ -58,10 +58,10 @@ namespace Proj4API
                 //// Set the DataKeyNames collection to store the ProductNumber in a DataKeys collection.
                 //// This is needed when you want to use primary keys in columns of a GridView and hide those columns.
                 //// Hidden columns are not rendered into HTML making the unavailable through the Cells collection of a Rom.
-                //String[] names = new String[1];
-                //names[0] = "Name";
-                //gvVisitor.DataKeyNames = names;
-                //gvVisitor.DataBind();
+                String[] names = new String[1];
+                names[0] = "Name";
+                gvVisitor.DataKeyNames = names;
+                gvVisitor.DataBind();
 
 
 
