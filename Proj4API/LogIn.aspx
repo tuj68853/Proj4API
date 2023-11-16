@@ -7,6 +7,7 @@
     <title>Log In</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
+    <%--<asp:ScriptManager ID="ScriptManagerLogIn" runat="server"></asp:ScriptManager>--%>
     <style>
         body, html {
             height: 100%;
@@ -38,31 +39,41 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <div class="card">
-                <h2 class="text-center" style="color: white">Login</h2>
-                <div style="text-align: center;">
-                    <asp:Label ID="lblAlert" runat="server" ForeColor="Red"></asp:Label>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label for="username" style="color: white">Username:</label>
+        <%--<asp:UpdatePanel runat="server" ID="UpdatePanelLogIn" UpdateMode="Conditional">
+                <ContentTemplate>--%>
+                    <div>
+                        <div class="card">
+                            <h2 class="text-center" style="color: white">Login</h2>
+                            <div style="text-align: center;">
+                                <asp:Label ID="lblAlert" runat="server" ForeColor="Red"></asp:Label>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label for="username" style="color: white">Username:</label>
                     
-                    <%--<input id="txtUsername" runat="server" class="form-control" />--%>
-                    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
-                </div>
-                <div class="form-check">
-                    <label for="userType" style="color: white">Choose user type:</label>
-                    <asp:RadioButtonList ID="rblAccountType" runat="server" ForeColor="White"></asp:RadioButtonList>
-                </div>
-                <div class="text-center">
-                    <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" ForeColor="Black" />
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" BackColor="#3C6D8F" ForeColor="White" />
-                    <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" BackColor="#3C6D8F" ForeColor="White" />
+                                <%--<input id="txtUsername" runat="server" class="form-control" />--%>
+                                <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-check">
+                                <label for="userType" style="color: white">Choose user type:</label>
+                                <asp:RadioButtonList ID="rblAccountType" runat="server" ForeColor="White"></asp:RadioButtonList>
+                            </div>
+                            <div class="text-center">
+                                <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" ForeColor="Black" />
+                                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" BackColor="#3C6D8F" ForeColor="White" />
+                                <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" BackColor="#3C6D8F" ForeColor="White" />
 
-                </div>
-            </div>
-        </div>
+                            </div>
+                        </div>
+                    </div>
+        <%--    </ContentTemplate>
+            </asp:UpdatePanel>--%>
     </form>
+
+    <%--<Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnBack" EventName="btnBack_Click">
+            <asp:AsyncPostBackTrigger ControlID="btnLogin" EventName="btnLogin_Click">
+            <asp:AsyncPostBackTrigger ControlID="btnCreateAccount" EventName="btnCreateAccount_Click">
+        </Triggers>--%>
 </body>
 </html>
