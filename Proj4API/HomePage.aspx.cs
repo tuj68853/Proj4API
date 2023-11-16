@@ -89,6 +89,19 @@ namespace Proj4API
             }
         }
 
+        // Handles the event that triggers the UpdatePanel to update.
+        protected void HomePageEvent1(object sender, EventArgs e)
+        {
+            // Whatever events that would happen on the UpdatePanel within the Homepage that you'd like to have happen, the logic for that would go here.
+            // This would be for the supposed 'Sign In' button, and the events linked to it, but anything can go here, and more events and triggers can be added easily.
+            // In theory, you could instead assign the trigger to something like 'btnSignIn_Click' to work seemlessl
+        }
+
+        protected void HomePageEvent2(object sender, EventArgs e)
+        {
+            // Whatever events that would happen on the UpdatePanel within the Homepage that you'd like to have happen, the logic for that would go here.
+        }
+
         public void DisplaySortForVisitor(String sortKey)
 
         {

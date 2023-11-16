@@ -30,6 +30,6 @@ namespace Proj4API
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl RegisterForm;
+        protected global::Proj4API.RegisterForm RegisterForm;
     }
 }

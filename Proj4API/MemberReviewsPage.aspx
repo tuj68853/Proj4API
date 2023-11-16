@@ -7,6 +7,7 @@
     <title>My Reviews</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <%--<asp:ScriptManager ID="ScriptManagerMemberReviewsPage" runat="server"></asp:ScriptManager>--%>
     <style>
         body, html {
             font-family: Arial, sans-serif;
@@ -41,6 +42,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <%--<asp:UpdatePanel runat="server" ID="UpdatePanelManageReservation" UpdateMode="Conditional">
+                <ContentTemplate>--%>
         <div class="Form">
             <div style="width: 500px">
 
@@ -158,6 +161,14 @@
                 <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
             </div>
         </div>
+        <%--    </ContentTemplate>
+            </asp:UpdatePanel>--%>
     </form>
+
+    <%--<Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnBack" EventName="btnBack_Click">
+            <asp:AsyncPostBackTrigger ControlID="btnAddReview" EventName="btnAddReview_Click">
+            <asp:AsyncPostBackTrigger ControlID="btnAdd" EventName="btnAdd_Click">
+        </Triggers>--%>
 </body>
 </html>
