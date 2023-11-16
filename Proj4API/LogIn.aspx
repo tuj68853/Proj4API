@@ -51,17 +51,24 @@
                             <div class="form-group">
                                 <label for="username" style="color: white">Username:</label>
                     
-                                <%--<input id="txtUsername" runat="server" class="form-control" />--%>
-                                <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
-                            </div>
-                            <div class="form-check">
-                                <label for="userType" style="color: white">Choose user type:</label>
-                                <asp:RadioButtonList ID="rblAccountType" runat="server" ForeColor="White"></asp:RadioButtonList>
-                            </div>
-                            <div class="text-center">
-                                <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" ForeColor="Black" />
-                                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" BackColor="#3C6D8F" ForeColor="White" />
-                                <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" BackColor="#3C6D8F" ForeColor="White" />
+                    <%--<input id="txtUsername" runat="server" class="form-control" />--%>
+                    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="password" style="color: white">Password:</label>
+                    
+                    <%--<input id="txtPassword" runat="server" class="form-control" />--%>
+                    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                </div>
+                <div class="form-check">
+                    <label for="userType" style="color: white">Choose user type:</label>
+                    <asp:RadioButtonList ID="rblAccountType" runat="server" ForeColor="White"></asp:RadioButtonList>
+                </div>
+                <div class="text-center">
+                    <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" ForeColor="Black" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" BackColor="#3C6D8F" ForeColor="White" />
+                    <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" BackColor="#3C6D8F" ForeColor="White" />
+
 
                             </div>
                         </div>
@@ -69,11 +76,5 @@
         <%--    </ContentTemplate>
             </asp:UpdatePanel>--%>
     </form>
-
-    <%--<Triggers>
-            <asp:AsyncPostBackTrigger ControlID="btnBack" EventName="btnBack_Click">
-            <asp:AsyncPostBackTrigger ControlID="btnLogin" EventName="btnLogin_Click">
-            <asp:AsyncPostBackTrigger ControlID="btnCreateAccount" EventName="btnCreateAccount_Click">
-        </Triggers>--%>
 </body>
 </html>

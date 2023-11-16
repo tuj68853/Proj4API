@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Data.SqlClient;
 using Utilities;
 
 namespace RestaurantAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     //[ApiController]
     public class RestaurantController : Controller
@@ -40,5 +42,43 @@ namespace RestaurantAPI.Controllers
             return restaurants;
 
         }
+
+        [HttpPost()]                // POST api/Restaurant/
+        [HttpPost("AddUser")]   // POST api/Restaurant/AddUser/
+        public Boolean AddUser([FromBody] User user)
+        {
+            if (user != null)
+
+            {
+
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "CreateUsers";
+                objCommand.Parameters.AddWithValue("@name_input", user.Name);
+                objCommand.Parameters.AddWithValue("@phone_input", user.Phone);
+                objCommand.Parameters.AddWithValue("@user_input", user.Username);
+                objCommand.Parameters.AddWithValue("@password_input", user.Password);
+                objCommand.Parameters.AddWithValue("@type_input", user.Type);
+
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
+
+
     }
 }

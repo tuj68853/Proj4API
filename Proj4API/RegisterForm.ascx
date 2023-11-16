@@ -24,6 +24,10 @@
             <span class="input-group-text">Username: </span>
             <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Password: </span>
+            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
 
         <asp:Label ID="Label5" runat="server" Text="What account type are you signing up for? "></asp:Label>
 
@@ -32,6 +36,9 @@
             <asp:ListItem>Represenative</asp:ListItem>
         </asp:DropDownList>
         <br />
+        <div class="text-center">
+            <asp:Label ID="lblAlert" runat="server" Text="" ForeColor="Red"></asp:Label>
+        </div>
         <div class="text-center">
             <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" ForeColor="Black" />
             <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary" OnClick="btnRegister_Click" BackColor="#3C6D8F" ForeColor="White" />

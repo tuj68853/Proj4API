@@ -110,7 +110,6 @@
     <Content Include="MemberReviewsPage.aspx" />
     <Content Include="RegisterForm.ascx" />
     <Content Include="ReviewsPage.aspx" />
-    <Content Include="UserControl.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -170,13 +169,6 @@
     </Compile>
     <Compile Include="ReviewsPage.aspx.designer.cs">
       <DependentUpon>ReviewsPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl.ascx.cs">
-      <DependentUpon>UserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControl.ascx.designer.cs">
-      <DependentUpon>UserControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
