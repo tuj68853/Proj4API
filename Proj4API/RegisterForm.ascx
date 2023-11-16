@@ -9,9 +9,9 @@
             <h3 style="color: #BB3E00">Register Form</h3>
         </div>
         <div class="Title" style="text-align: center">
-            <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblAlert" runat="server" Text="" ForeColor="Red"></asp:Label>
         </div>
-
+        <br />
         <div class="input-group mb-3">
             <span class="input-group-text">Name: </span>
             <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
@@ -36,9 +36,6 @@
             <asp:ListItem>Represenative</asp:ListItem>
         </asp:DropDownList>
         <br />
-        <div class="text-center">
-            <asp:Label ID="lblAlert" runat="server" Text="" ForeColor="Red"></asp:Label>
-        </div>
         <div class="text-center">
             <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" ForeColor="Black" />
             <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary" OnClick="btnRegister_Click" BackColor="#3C6D8F" ForeColor="White" />
