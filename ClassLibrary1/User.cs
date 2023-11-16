@@ -12,12 +12,14 @@ namespace ClassLibrary1
         string name;
         string phone;
         string username;
+        string password;
         string type;
 
 
-        public User(string name, string phone, string username, string type)
+        public User(string name, string phone, string username, string password, string type)
         {
             this.username = username;
+            this.password = password;
             this.type = type;
             this.name = name;
             this.phone = phone;
@@ -28,6 +30,12 @@ namespace ClassLibrary1
         {
             get { return username; }
             set { username = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
         }
 
         public string Type

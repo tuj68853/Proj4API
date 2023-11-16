@@ -37,6 +37,9 @@
         </asp:DropDownList>
         <br />
         <div class="text-center">
+            <asp:Label ID="lblAlert" runat="server" Text="" ForeColor="Red"></asp:Label>
+        </div>
+        <div class="text-center">
             <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" OnClick="btnBack_Click" ForeColor="Black" />
             <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary" OnClick="btnRegister_Click" BackColor="#3C6D8F" ForeColor="White" />
         </div>

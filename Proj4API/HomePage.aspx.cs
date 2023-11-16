@@ -66,10 +66,8 @@ namespace Proj4API
 
 
 
-
-
                 // Create an HTTP Web Request and get the HTTP Web Response from the server.
-                WebRequest request = WebRequest.Create("http://localhost:50241/api/Restaurant"); 
+                WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant");
                 WebResponse response = request.GetResponse();
 
                 // Read the data from the Web Response, which requires working with streams.
