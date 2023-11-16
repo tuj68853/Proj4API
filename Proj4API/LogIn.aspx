@@ -16,9 +16,9 @@
             align-items: center;
             justify-content: center;
             font-family: Arial, sans-serif;
-            background-image: url('Citiesbg.jpg'); 
-            background-repeat: no-repeat; 
-            background-attachment: fixed; 
+            background-image: url('Citiesbg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-size: cover
         }
 
@@ -29,7 +29,6 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            
         }
 
         .text-center {
@@ -39,25 +38,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <%--<asp:UpdatePanel runat="server" ID="UpdatePanelLogIn" UpdateMode="Conditional">
-                <ContentTemplate>--%>
-                    <div>
-                        <div class="card">
-                            <h2 class="text-center" style="color: white">Login</h2>
-                            <div style="text-align: center;">
-                                <asp:Label ID="lblAlert" runat="server" ForeColor="Red"></asp:Label>
-                            </div>
-                            <br />
-                            <div class="form-group">
-                                <label for="username" style="color: white">Username:</label>
-                    
-                    <%--<input id="txtUsername" runat="server" class="form-control" />--%>
+        <div>
+            <div class="card">
+                <h2 class="text-center" style="color: white">Login</h2>
+                <div style="text-align: center;">
+                    <asp:Label ID="lblAlert" runat="server" ForeColor="Red"></asp:Label>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="username" style="color: white">Username:</label>
+
+
                     <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label for="password" style="color: white">Password:</label>
-                    
-                    <%--<input id="txtPassword" runat="server" class="form-control" />--%>
+
+
                     <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-check">
@@ -70,11 +67,9 @@
                     <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" BackColor="#3C6D8F" ForeColor="White" />
 
 
-                            </div>
-                        </div>
-                    </div>
-        <%--    </ContentTemplate>
-            </asp:UpdatePanel>--%>
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>
