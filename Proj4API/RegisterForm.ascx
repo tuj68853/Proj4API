@@ -24,6 +24,10 @@
             <span class="input-group-text">Username: </span>
             <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Password: </span>
+            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
 
         <asp:Label ID="Label5" runat="server" Text="What account type are you signing up for? "></asp:Label>
 

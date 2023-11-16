@@ -51,6 +51,12 @@
                     <%--<input id="txtUsername" runat="server" class="form-control" />--%>
                     <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
                 </div>
+                <div class="form-group">
+                    <label for="password" style="color: white">Password:</label>
+                    
+                    <%--<input id="txtPassword" runat="server" class="form-control" />--%>
+                    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                </div>
                 <div class="form-check">
                     <label for="userType" style="color: white">Choose user type:</label>
                     <asp:RadioButtonList ID="rblAccountType" runat="server" ForeColor="White"></asp:RadioButtonList>
