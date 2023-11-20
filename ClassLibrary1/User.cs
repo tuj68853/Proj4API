@@ -25,6 +25,17 @@ namespace ClassLibrary1
             this.phone = phone;
 
         }
+        public User(string username, string password, string type)
+        {
+            this.username = username;
+            this.password = password;
+            this.type = type;
+        }
+
+        public User()
+        {
+
+        }
 
         public string Username
         {

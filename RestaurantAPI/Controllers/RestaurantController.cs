@@ -77,6 +77,37 @@ namespace RestaurantAPI.Controllers
 
 
 
+        [HttpPost("Login")]
+        public bool Login([FromBody] User user)
+        {
+            if (user != null)
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "FindUsers";
+                objCommand.Parameters.AddWithValue("@username_input", user.Username);
+                objCommand.Parameters.AddWithValue("@password_input", user.Password);
+                objCommand.Parameters.AddWithValue("@type_input", user.Type);
+
+                // Execute the stored procedure and get the result as a DataSet
+                DataSet ds = objDB.GetDataSetUsingCmdObj(objCommand);
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    int loginResult = Convert.ToInt32(ds.Tables[0].Rows[0]["LoginResult"]);
+
+                    // Check if the login was successful
+                    return loginResult == 1;
+                }
+
+            }
+            return false;
+        }
+
+
+
 
 
 

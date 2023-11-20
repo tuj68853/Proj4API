@@ -76,12 +76,12 @@ namespace Proj4API
                 newUser.Type = ddlAccountType.SelectedValue;
 
 
-                // Serialize a Customer object into a JSON string.
+                // Serialize a User object into a JSON string.
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 String jsonUser = js.Serialize(newUser);
                 try
                 {
-                    // Send the Customer object to the Web API that will be used to store a new customer record in the database.
+                    // Send the User object to the Web API that will be used to store a new customer record in the database.
                     // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
                     WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant/AddUser/");
 
