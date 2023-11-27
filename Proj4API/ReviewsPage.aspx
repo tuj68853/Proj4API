@@ -50,8 +50,16 @@
             </div>
 
             <div class="Grid-View">
-                <asp:GridView ID="gvReviews" runat="server" CellPadding="10" ForeColor="#333333">
+                <asp:GridView ID="gvReviews" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <Columns>
+                        <asp:BoundField DataField="Username" HeaderText="Username" />
+                        <asp:BoundField DataField="Comment" HeaderText="Comment" />
+                        <asp:BoundField DataField="FoodQuality" HeaderText="Food Quality" />
+                        <asp:BoundField DataField="Service" HeaderText="Service" />
+                        <asp:BoundField DataField="Atmosphere" HeaderText="Atmosphere" />
+                        <asp:BoundField DataField="PriceLevel" HeaderText="Price Level" />
+                    </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

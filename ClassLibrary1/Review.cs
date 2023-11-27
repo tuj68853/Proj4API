@@ -30,6 +30,11 @@ namespace ClassLibrary1
 
         }
 
+        public Review()
+        {
+
+        }
+
         public string Username
         {
             get { return username; }

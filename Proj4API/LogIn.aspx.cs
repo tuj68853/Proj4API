@@ -64,41 +64,7 @@ namespace Proj4API
             //    lblAlert.Text = "ERROR: Your account does not exist, Please enter a different Username!";
             //    txtUser.Text = "";
             //}
-            // Find a record in the database using the web service method that returns a Customer object
-            // Create an HTTP Web Request and get the HTTP Web Response from the server.
-
-
-
-            //WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant" + "/GetUserByUserPass/" + txtUser.Text + "/" + txtPassword.Text + "/" + rblAccountType.Text);
-            //WebResponse response = request.GetResponse();
-
-            //// Read the data from the Web Response, which requires working with streams.
-            //Stream theDataStream = response.GetResponseStream();
-            //StreamReader reader = new StreamReader(theDataStream);
-            //String data = reader.ReadToEnd();
-            //reader.Close();
-            //response.Close();
-
-            //// Deserialize a JSON string that contains an array of JSON objects into an Array of Team objects.
-            //JavaScriptSerializer js = new JavaScriptSerializer();
-            //User user = js.Deserialize<User>(data);
-            //if (user != null)
-            //{
-            //    Session["CurrentUser"] = user.Username;
-            //    Session["CurrentUserType"] = user.Type;
-            //    Response.Redirect("HomePage.aspx");
-            //}
-            //else
-            //{
-            //    lblAlert.Text = "ERROR: Your account does not exist, Please try again!";
-            //    txtUser.Text = "";
-            //    txtPassword.Text = "";
-            //}
-
-
-
-
-
+            
 
 
             if (txtUser.Text == "" || txtPassword.Text == "" || rblAccountType.SelectedItem == null)
