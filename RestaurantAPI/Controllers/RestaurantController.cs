@@ -149,6 +149,40 @@ namespace RestaurantAPI.Controllers
 
 
 
+        [HttpPost("AddReview")]   // POST api/Restaurant/AddReview/
+        public Boolean AddReview([FromBody] Review review)
+        {
+            if (review != null)
+
+            {
+
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "CreateReviews";
+                objCommand.Parameters.AddWithValue("@username_input", review.Username);
+                objCommand.Parameters.AddWithValue("@restaurant_input", review.Restaurant);
+                objCommand.Parameters.AddWithValue("@comment_input", review.Comment);
+                objCommand.Parameters.AddWithValue("@foodQuality_input", review.FoodQuality);
+                objCommand.Parameters.AddWithValue("@service_input", review.Service);
+                objCommand.Parameters.AddWithValue("@atmosphere_input", review.Atmosphere);
+                objCommand.Parameters.AddWithValue("@priceLevel_input", review.PriceLevel);
+
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
 
 

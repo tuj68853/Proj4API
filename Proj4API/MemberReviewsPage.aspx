@@ -122,7 +122,7 @@
                         <%--<asp:BoundField DataField="ServiceRating" HeaderText="Service" />--%>
                         <asp:TemplateField HeaderText="Service">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text ='<%# Eval("ServiceRating")%>'></asp:Label>
+                                <asp:Label runat="server" Text ='<%# Eval("Service")%>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtService" runat="server" Text ='<%# Bind("ServiceRating")%>'></asp:TextBox>

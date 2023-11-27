@@ -4,8 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
@@ -128,6 +131,47 @@ namespace Proj4API
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            //if (txtRestaurantName.Text == "" || txtComment.Text == "" || txtFoodQuality.Text == "" || txtService.Text == "" || txtAtmosphere.Text == "" || txtPriceLevel.Text == "")
+            //{
+            //    lblAlert.Text = "Please fill out everything on the form to add a review";
+            //}
+            //else
+            //{
+            //    Review newReview = new Review(lblUsername.Text, txtRestaurantName.Text, txtComment.Text, txtFoodQuality.Text, txtService.Text, txtAtmosphere.Text, txtPriceLevel.Text);
+            //    // Set the SQLCommand object's properties for executing a Stored Procedure
+            //    objCommand = new SqlCommand();
+            //    objCommand.CommandType = CommandType.StoredProcedure;
+            //    objCommand.CommandText = "CreateReviews";     // identify the name of the stored procedure to execute
+
+            //    objCommand.Parameters.AddWithValue("@username_input", newReview.Username.ToString());
+            //    objCommand.Parameters.AddWithValue("@restaurant_input", newReview.Restaurant.ToString());
+            //    objCommand.Parameters.AddWithValue("@comment_input", newReview.Comment.ToString());
+            //    objCommand.Parameters.AddWithValue("@foodQuality_input", newReview.FoodQuality.ToString());
+            //    objCommand.Parameters.AddWithValue("@service_input", newReview.Service.ToString());
+            //    objCommand.Parameters.AddWithValue("@atmosphere_input", newReview.Atmosphere.ToString());
+            //    objCommand.Parameters.AddWithValue("@priceLevel_input", newReview.PriceLevel.ToString());
+
+            //    try
+            //    {
+            //        objDB.DoUpdateUsingCmdObj(objCommand);
+            //        objDB.CloseConnection();
+            //        GetReviews();
+            //        txtRestaurantName.Text = "";
+            //        txtComment.Text = "";
+            //        txtFoodQuality.Text = "";
+            //        txtService.Text = "";
+            //        txtAtmosphere.Text = "";
+            //        txtPriceLevel.Text = "";
+            //        lblAlert.Text = "Review was successfully added";
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        lblAlert.Text = "Error adding the review: " + ex.Message;
+            //    }
+            //}
+
+
+
             if (txtRestaurantName.Text == "" || txtComment.Text == "" || txtFoodQuality.Text == "" || txtService.Text == "" || txtAtmosphere.Text == "" || txtPriceLevel.Text == "")
             {
                 lblAlert.Text = "Please fill out everything on the form to add a review";
@@ -135,24 +179,43 @@ namespace Proj4API
             else
             {
                 Review newReview = new Review(lblUsername.Text, txtRestaurantName.Text, txtComment.Text, txtFoodQuality.Text, txtService.Text, txtAtmosphere.Text, txtPriceLevel.Text);
-                // Set the SQLCommand object's properties for executing a Stored Procedure
-                objCommand = new SqlCommand();
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "CreateReviews";     // identify the name of the stored procedure to execute
 
-                objCommand.Parameters.AddWithValue("@username_input", newReview.Username.ToString());
-                objCommand.Parameters.AddWithValue("@restaurant_input", newReview.Restaurant.ToString());
-                objCommand.Parameters.AddWithValue("@comment_input", newReview.Comment.ToString());
-                objCommand.Parameters.AddWithValue("@foodQuality_input", newReview.FoodQuality.ToString());
-                objCommand.Parameters.AddWithValue("@service_input", newReview.Service.ToString());
-                objCommand.Parameters.AddWithValue("@atmosphere_input", newReview.Atmosphere.ToString());
-                objCommand.Parameters.AddWithValue("@priceLevel_input", newReview.PriceLevel.ToString());
+                newReview.Username = lblUsername.Text;
+                newReview.Restaurant = txtRestaurantName.Text;
+                newReview.Comment = txtComment.Text;
+                newReview.FoodQuality = txtFoodQuality.Text;
+                newReview.Service = txtService.Text;
+                newReview.Atmosphere = txtAtmosphere.Text;
+                newReview.PriceLevel = txtPriceLevel.Text;
 
+
+                // Serialize a User object into a JSON string.
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                String jsonReview = js.Serialize(newReview);
                 try
                 {
-                    objDB.DoUpdateUsingCmdObj(objCommand);
-                    objDB.CloseConnection();
-                    GetReviews();
+                    // Send the User object to the Web API that will be used to store a new customer record in the database.
+                    // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
+                    WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant/AddReview/");
+
+                    request.Method = "POST";
+                    request.ContentLength = jsonReview.Length;
+                    request.ContentType = "application/json";
+                    // Write the JSON data to the Web Request
+                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                    writer.Write(jsonReview);
+                    writer.Flush();
+                    writer.Close();
+
+                    // Read the data from the Web Response, which requires working with streams.
+                    WebResponse response = request.GetResponse();
+                    Stream theDataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(theDataStream);
+                    String data = reader.ReadToEnd();
+
+                    reader.Close();
+                    response.Close();
+
                     txtRestaurantName.Text = "";
                     txtComment.Text = "";
                     txtFoodQuality.Text = "";
@@ -160,12 +223,19 @@ namespace Proj4API
                     txtAtmosphere.Text = "";
                     txtPriceLevel.Text = "";
                     lblAlert.Text = "Review was successfully added";
+
                 }
                 catch (Exception ex)
                 {
-                    lblAlert.Text = "Error adding the review: " + ex.Message;
+                    lblAlert.Text = "Error: " + ex.Message;
                 }
             }
+
+
+
+
+
+
 
 
 
