@@ -36,29 +36,73 @@ namespace Proj4API
 
         private void GetReviews()
         {
-            currentUser = Session["currentUser"].ToString();
-            lblUsername.Text = currentUser;
-            // Set the SQLCommand object's properties for executing a Stored Procedure
-            objCommand = new SqlCommand();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetReviewsByUsername";     // identify the name of the stored procedure to execute
+            //currentUser = Session["currentUser"].ToString();
+            //lblUsername.Text = currentUser;
+            //// Set the SQLCommand object's properties for executing a Stored Procedure
+            //objCommand = new SqlCommand();
+            //objCommand.CommandType = CommandType.StoredProcedure;
+            //objCommand.CommandText = "GetReviewsByUsername";     // identify the name of the stored procedure to execute
 
-            objCommand.Parameters.AddWithValue("@username_input", currentUser);
+            //objCommand.Parameters.AddWithValue("@username_input", currentUser);
 
-            try
+            //try
+            //{
+            //    DataSet ds = objDB.GetDataSet(objCommand);
+            //    // Bind the DataTable to the GridView
+            //    gvMemberReviews.DataSource = ds.Tables[0];
+            //    gvMemberReviews.DataBind();
+            //    objDB.CloseConnection();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Handle any exceptions
+            //    lblAlert.Text = "Error getting data for the reviews: " + ex.Message;
+            //}
+
+
+            // Check if the session variable is not null
+            if (Session["currentUser"] != null)
             {
-                DataSet ds = objDB.GetDataSet(objCommand);
-                // Bind the DataTable to the GridView
-                gvMemberReviews.DataSource = ds.Tables[0];
+                currentUser = Session["currentUser"].ToString();
+                lblUsername.Text = currentUser;
+
+                // Create a Web Request to fetch reviews based on the restaurant name
+                WebRequest request = WebRequest.Create("http://localhost:5292/api/Restaurant/GetReviewsByUsername/" + Session["CurrentUser"].ToString());
+
+                // Get the Web Response
+                WebResponse response = request.GetResponse();
+
+                // Read the data from the Web Response using streams
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
+                String data = reader.ReadToEnd();
+                // Close the reader and release resources
+                reader.Close();
+                response.Close();
+
+                // Deserialize the JSON string into a list of Review objects
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                //Review[] reviews = js.Deserialize<Review[]>(data);
+                List<Review> reviews = js.Deserialize<List<Review>>(data);
+
+                // Bind the data to the GridView
+                gvMemberReviews.DataSource = reviews;
                 gvMemberReviews.DataBind();
-                objDB.CloseConnection();
+
+                
 
             }
-            catch (Exception ex)
+            else
             {
-                // Handle any exceptions
-                lblAlert.Text = "Error getting data for the reviews: " + ex.Message;
+                // Handle the case where the session variable is null
+                lblAlert.Text = "Error: The restaurant name is not available.";
             }
+
+
+
+
+
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -216,6 +260,7 @@ namespace Proj4API
                     reader.Close();
                     response.Close();
 
+                    GetReviews();
                     txtRestaurantName.Text = "";
                     txtComment.Text = "";
                     txtFoodQuality.Text = "";

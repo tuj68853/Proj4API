@@ -183,6 +183,48 @@ namespace RestaurantAPI.Controllers
         }
 
 
+        [HttpGet("GetReviewsByUsername/{username}")]
+        public List<Review> GetReviewsByUsername(string username)
+        {
+            List<Review> reviewList = new List<Review>();
+            DBConnect objDB;
+            SqlCommand objCommand;
+
+            try
+            {
+                objDB = new DBConnect();
+                objCommand = new SqlCommand();
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "GetReviewsByUsername";
+                objCommand.Parameters.AddWithValue("@username_input", username);
+
+
+                DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+
+                foreach (DataRow record in myDS.Tables[0].Rows)
+                {
+                    Review review = new Review
+                    {
+                        Restaurant = record["Restaurant"].ToString(),
+                        Comment = record["Comment"].ToString(),
+                        FoodQuality = record["FoodQuality"].ToString(),
+                        Service = record["Service"].ToString(),
+                        Atmosphere = record["Atmosphere"].ToString(),
+                        PriceLevel = record["PriceLevel"].ToString(),
+                    };
+
+                    reviewList.Add(review);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error in GetReviewsByUsername: {ex.Message}");
+                // You might want to throw the exception here or handle it in a way that makes sense for your application
+            }
+            return reviewList;
+        }
+
 
 
 

@@ -99,7 +99,6 @@
             <div class="Grid-View">
                 <asp:GridView ID="gvMemberReviews" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvMemberReviews_RowCancelingEdit" OnRowEditing="gvMemberReviews_RowEditing" CellPadding="1" OnRowUpdating="gvMemberReviews_RowUpdating" HorizontalAlign="Left" OnRowDeleting="gvMemberReviews_RowDeleting" DataKeyNames="Restaurant">
                     <Columns>
-                        <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="true" />
                         <asp:BoundField DataField="Restaurant" HeaderText="Restaurant" ReadOnly="true" />
                         <%--<asp:BoundField DataField="Comment" HeaderText="Comment" />--%>
                         <asp:TemplateField HeaderText="Comment">
