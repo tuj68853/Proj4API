@@ -227,6 +227,39 @@ namespace RestaurantAPI.Controllers
 
 
 
+        [HttpPost("AddReservation")]   // POST api/Restaurant/AddReservation/
+        public Boolean AddReservation([FromBody] Reservation reservation)
+        {
+            if (reservation != null)
+
+            {
+
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "CreateReservations";
+                objCommand.Parameters.AddWithValue("@restaurant_input", reservation.Restaurant);
+                objCommand.Parameters.AddWithValue("@name_input", reservation.Name);
+                objCommand.Parameters.AddWithValue("@date_input", reservation.Date);
+                objCommand.Parameters.AddWithValue("@time_input", reservation.Time);
+                objCommand.Parameters.AddWithValue("@contactPhone_input", reservation.ContactPhone);
+                objCommand.Parameters.AddWithValue("@totalGuests_input", reservation.TotalGuests);
+        
+                
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
 
     }
