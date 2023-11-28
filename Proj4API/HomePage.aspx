@@ -83,8 +83,9 @@
 <body style="min-height: 100vh; width: 100%">
     <form id="form1" runat="server">
         <%-- UPDATE PANEL STUFF, UNCOMMENT THE COMMENTS TO TEST IT.--%>
-        <%--<asp:UpdatePanel runat="server" ID="UpdatePanelHomePage" UpdateMode="Conditional">
-            <ContentTemplate>--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel runat="server" ID="UpdatePanelHomePage" UpdateMode="Conditional">
+            <ContentTemplate>
                 <%-- HEADER --%>
                 <div class="Header">
                     <div>
@@ -94,8 +95,8 @@
                         <asp:Button ID="btnSignIn" runat="server" Text="Sign In" BackColor="#3C6D8F" ForeColor="White" OnClick="btnSignIn_Click" />
                         <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" BackColor="#3C6D8F" ForeColor="White" OnClick="btnCreateAccount_Click" />
                         <asp:Button ID="btnWriteReview" runat="server" Text="Write Review" BackColor="#3C6D8F" ForeColor="White" OnClick="btnWriteReview_Click" Visible="False" />
-                        <asp:Button ID="btnManageInfo" runat="server" Text="Manage Info" BackColor="#3C6D8F" ForeColor="White" OnClick="btnManageInfo_Click" Visible="False"/>
-                        <asp:Button ID="btnManageReservations" runat="server" Text="Manage Reservations" BackColor="#3C6D8F" ForeColor="White" OnClick="btnManageReservations_Click" Visible="False"/>
+                        <asp:Button ID="btnManageInfo" runat="server" Text="Manage Info" BackColor="#3C6D8F" ForeColor="White" OnClick="btnManageInfo_Click" Visible="False" />
+                        <asp:Button ID="btnManageReservations" runat="server" Text="Manage Reservations" BackColor="#3C6D8F" ForeColor="White" OnClick="btnManageReservations_Click" Visible="False" />
                         <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" Visible="False" />
                         <asp:Label ID="lblSignUpNote" runat="server" Text="<--Sign up to leave a review!" Font-Names="Broadway"></asp:Label>
                     </div>
@@ -111,7 +112,7 @@
                 <div class="Mid-Content">
                     <div class="red-bar">
                         <div class="Search-Bar">
-                            <asp:TextBox ID="txtSearch" runat="server" style="background: transparent; outline: none; flex: 1; border: 0; width: 250px"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" Style="background: transparent; outline: none; flex: 1; border: 0; width: 250px"></asp:TextBox>
                             <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
                         </div>
 
@@ -161,8 +162,8 @@
                     </asp:GridView>
                     <br />
                 </div>
-            <%--</ContentTemplate>
-        </asp:UpdatePanel>--%>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
 
     <%-- TRIGGER STUFF --%>

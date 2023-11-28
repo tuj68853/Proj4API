@@ -24,6 +24,24 @@ namespace Proj4API
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// ScriptManagerMemberReviewsPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerMemberReviewsPage;
+
+        /// <summary>
+        /// UpdatePanelManageReservation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelManageReservation;
+
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
