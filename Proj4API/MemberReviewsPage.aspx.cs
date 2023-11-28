@@ -133,40 +133,48 @@ namespace Proj4API
         protected void gvMemberReviews_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
-            string restaurantName = gvMemberReviews.DataKeys[e.RowIndex].Value.ToString();
-            string comment = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtComment") as TextBox).Text;
-            string fq = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtFoodQuality") as TextBox).Text;
-            string service = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtService") as TextBox).Text;
-            string atmosphere = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtAtmosphere") as TextBox).Text;
-            string pricelevel = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtPriceLevel") as TextBox).Text;
+            //string restaurantName = gvMemberReviews.DataKeys[e.RowIndex].Value.ToString();
+            //string comment = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtComment") as TextBox).Text;
+            //string fq = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtFoodQuality") as TextBox).Text;
+            //string service = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtService") as TextBox).Text;
+            //string atmosphere = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtAtmosphere") as TextBox).Text;
+            //string pricelevel = (gvMemberReviews.Rows[e.RowIndex].FindControl("txtPriceLevel") as TextBox).Text;
 
-            objCommand = new SqlCommand();
+            //objCommand = new SqlCommand();
+            //objCommand.CommandType = CommandType.StoredProcedure;
+            //objCommand.CommandText = "UpdateReviewByRestaurant";
 
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "UpdateReviewByRestaurant";
-
-            objCommand.Parameters.AddWithValue("@review_restaurantname", restaurantName);
-            objCommand.Parameters.AddWithValue("@review_comment", comment);
-            objCommand.Parameters.AddWithValue("@review_fq", fq);
-            objCommand.Parameters.AddWithValue("@review_service", service);
-            objCommand.Parameters.AddWithValue("@review_atmosphere", atmosphere);
-            objCommand.Parameters.AddWithValue("@review_pricelevel", pricelevel);
+            //objCommand.Parameters.AddWithValue("@review_restaurantname", restaurantName);
+            //objCommand.Parameters.AddWithValue("@review_comment", comment);
+            //objCommand.Parameters.AddWithValue("@review_fq", fq);
+            //objCommand.Parameters.AddWithValue("@review_service", service);
+            //objCommand.Parameters.AddWithValue("@review_atmosphere", atmosphere);
+            //objCommand.Parameters.AddWithValue("@review_pricelevel", pricelevel);
 
 
-            try
-            {
-                objDB.DoUpdateUsingCmdObj(objCommand); // Execute the stored procedure
-                objDB.CloseConnection();
-                gvMemberReviews.EditIndex = -1;
-                GetReviews(); // Refresh the data in the GridView
-                lblAlert.Text = "Reviews updated successfully";
+            //try
+            //{
+            //    objDB.DoUpdateUsingCmdObj(objCommand); // Execute the stored procedure
+            //    objDB.CloseConnection();
+            //    gvMemberReviews.EditIndex = -1;
+            //    GetReviews(); // Refresh the data in the GridView
+            //    lblAlert.Text = "Reviews updated successfully";
 
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions
-                lblAlert.Text = "Error updating Reviews: " + ex.Message;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Handle any exceptions
+            //    lblAlert.Text = "Error updating Reviews: " + ex.Message;
+            //}
+
+
+
+
+
+
+
+
+
 
 
 

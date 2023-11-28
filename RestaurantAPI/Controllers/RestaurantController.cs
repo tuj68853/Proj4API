@@ -262,5 +262,53 @@ namespace RestaurantAPI.Controllers
 
 
 
+        [HttpPost("UpdateReviewsByRestaurant/{restaurant}")]
+        public IActionResult UpdateReviewsByRestaurant(string restaurant, [FromBody] Review updatedReview)
+        {
+            if (updatedReview == null)
+            {
+                return BadRequest("Invalid data");
+            }
+
+            try
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "UpdateReviewByRestaurant";
+                objCommand.Parameters.AddWithValue("@review_restaurantname", restaurant);
+                objCommand.Parameters.AddWithValue("@review_comment", updatedReview.Comment);
+                objCommand.Parameters.AddWithValue("@review_fq", updatedReview.FoodQuality);
+                objCommand.Parameters.AddWithValue("@review_service", updatedReview.Service);
+                objCommand.Parameters.AddWithValue("@review_atmosphere", updatedReview.Atmosphere);
+                objCommand.Parameters.AddWithValue("@review_pricelevel", updatedReview.PriceLevel);
+
+                int rowsAffected = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (rowsAffected > 0)
+                {
+                    return Ok("Review updated successfully");
+                }
+                else
+                {
+                    return NotFound("Review not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error in UpdateReviewsByRestaurant: {ex.Message}");
+                // You might want to throw the exception here or handle it in a way that makes sense for your application
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }
